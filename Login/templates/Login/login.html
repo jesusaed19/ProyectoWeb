@@ -1,0 +1,88 @@
+{% extends 'Login/base_login.html' %}
+
+{% load static %}
+
+{% block title %}
+
+Iniciar Sesion
+
+{% endblock title %}
+
+
+{% block content %}
+
+<div class="container">
+<div class="forms-container">
+    <div class="signin-signup">
+
+        <!-- Sign in -->
+        
+       <form action="" method="post" class="sign-in-form">
+
+        {% csrf_token %}
+
+        <h2 class="title">Iniciar sesión</h2>
+
+            {%if messages%}
+
+            {% for mensajes in messages %}
+
+              <span class="mensajes_error">{{mensajes}}</span>
+
+            {%endfor%}
+
+
+            {% endif %}
+
+        
+            {{form_login}}
+        
+
+        {% comment %} <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="Username">
+        </div>
+        <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Password">
+        </div> {% endcomment %}
+
+        <button class="btn solid" type="submit">Iniciar sesión</button>
+
+       </form>
+
+    </div>
+
+    <div class="panels-container">
+        <div class="panel left-panel">
+            <div class="content">
+                <h3>BIENVENIDOS A TOYOTALCPARTS.</h3>
+                <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p> -->
+                <br>
+                <a href="{% url 'Login' %}" class="btn transparent" id="sign-up-btn">Registrarme</a>
+            </div>
+
+            <img src="{% static 'ProyectoWebapp/img/undraw_by_my_car_ttge.svg' %}" class="image" alt="">
+        </div>
+        <div class="panel right-panel">
+            <div class="content">
+                <h3>Primera vez con nosotros?</h3>
+                <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>  -->
+                <p></p>
+                <a href="{% url 'Signin' %}" class="btn transparent" id="sign-up-btn">Sign up</a>
+                
+            </div>
+
+            <img src="{% static 'ProyectoWebapp/img/undraw_login_re_4vu2.svg' %}" class="image" alt="">
+        </div>
+    </div>
+
+</div>
+
+
+
+
+{% endblock content %}
+
+
+

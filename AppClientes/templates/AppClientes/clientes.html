@@ -1,0 +1,119 @@
+{% extends "ProyectoWebapp/base.html" %}
+    
+    {% load static %}
+    <title>
+        {% block title %}
+
+            Clientes
+
+        {% endblock title %}
+  
+    </title>    
+
+    <!-- <link rel="stylesheet" href="{% static 'ProyectoWebapp/css/style.css' %}"> -->
+
+    
+    
+
+    {% block content %}
+
+    
+   
+    <!-- Cards -->
+    <section class="cardBox">
+        <section class="card cta">
+            <section>
+                <section class="numbers"><ion-icon name="people-outline"></ion-icon></section>
+                <section class="cardName">Agregar Cliente</section>
+            </section>
+            <section class="iconBx">
+                <ion-icon name="add-outline"></ion-icon>
+            </section>
+        </section>
+        
+    </section>
+
+    <section class="details productos">
+        <!-- order details list -->
+        <section class="recentOrders">
+            <section class="cardHeader">
+                <h2>Clientes</h2>
+                <!-- <a href="#" class="btn">Ver todo</a> -->
+            </section>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <!-- <td>ID</td> -->
+                            <td>Nombre</td>
+                            <td>Apellido</td>
+                            <td>Direccion</td>
+                            <td>Email</td>
+                            <td>Télefono</td>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for cliente in clientes %}
+                        
+                        <tr>
+                            <!-- <td><span class="status id">{{cliente.id}}</span></td> -->
+                            <td>{{cliente.nombre}}</td>
+                            <td>{{cliente.apellido}}</td>
+                            <td>{{cliente.direccion}}</td>
+                            <td>{{cliente.email}}</td>
+                            <td>{{cliente.tfn}}</td>
+                        </tr>                   
+                                                
+                        {% endfor %}
+                        
+                        
+                    </tbody>
+                </table>
+        </section>
+
+    </section>
+
+     <!-- Modal clients -->
+
+     <div class="modal-container">
+        <div class="modal modal-close">
+            <p class="text">Añadir Cliente</p>
+            <div class="modal-form">
+                <form action="" method="post">
+
+                    {% csrf_token %}
+
+                    <label for="" class="lbl1">Nombre:</label>
+                    <input name="producto" type="text" placeholder="Nombre..." class="inp1">
+                    
+                    
+                    <label for="" class="lbl2">Apellido:</label>
+                    <input name="marca" type="text" placeholder="Apellido..." class="inp2">
+                    
+                    <label for="" class="lbl3">Direción:</label>
+                    <input name="seccion" type="text" placeholder="Direccion..." class="inp3">
+                    
+                    <label for="" class="lbl4">Email:</label>
+                    <input name="cantidad" type="text" placeholder="Email..." class="inp4">
+                    
+                    <label for="" class="lbl5">Télefono:</label>
+                    <input name="costo" type="text" placeholder="Telefono..." class="inp5">
+                                        
+                    <button type="submit" class="btna">Guardar</button>
+                </form>
+            </div>
+            <div class="buttoms">
+                <p class="close btnc">Cerrar</p>
+            </div>
+        </div>
+    </div> 
+
+    
+    <script src="{% static 'ProyectoWebapp\js\modal.js' %}"></script>
+
+    {% endblock content %}
+
+
+
+

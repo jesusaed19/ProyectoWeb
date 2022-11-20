@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    
+    <title>
+        {% block title %}
+
+        {% endblock title %}
+    </title>
+    <link rel="stylesheet" href="{% static 'ProyectoWebapp/css/style.css' %}">
+    
+    
+    
+</head>
+<body>
+
+    <section class="container">
+        <section class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon logo">
+                            <ion-icon name="cog-outline"></ion-icon>
+                        </span>
+                        <span class="title logo">TOYOTALCPARST</span>
+                    </a>
+                </li>
+                <li >
+                <a href="{% url 'Panel' %}">
+                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                        <span class="title">Panel de Control</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'Clientes' %}">
+                        <span class="icon"><ion-icon name="people-outline"></ion-icon></span>
+                        <span class="title">Clientes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="cart-outline"></ion-icon></span>
+                        <span class="title">Compras</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'Ventas' %}">
+                        <span class="icon"><ion-icon name="bag-handle-outline"></ion-icon></span>
+                        <span class="title">Ventas</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'Productos' %} ">
+                        <span class="icon"><ion-icon name="albums-outline"></ion-icon></span>
+                        <span class="title">Productos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
+                        <span class="title">Configuracion</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'Logout' %}">
+                        <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                        <span class="title">Cerrar Sesion</span>
+                    </a>
+                </li>
+                
+            </ul>
+        </section>
+
+        <!--MAIN-->
+
+            <section class="main">
+
+                <section class="topbar">
+
+                    <!-- MENU HAMBURGUESA -->
+                    <section class="toggle">
+                        <ion-icon name="menu-outline"></ion-icon>
+                    </section> 
+                    
+                    <!-- SEARCH -->
+                    <section class="search">
+                        <label>
+                                <input type="text" placeholder="Buscar..." name="search">
+                                <ion-icon name="search-outline"></ion-icon>
+                        </label>
+                    </section>
+
+                    <section style="text-align: right; margin-right: 0px;">
+
+                        {% if user.is_authenticated %}
+
+                            Hola &nbsp; <span class="saludo">{{user.username}}</span> 
+
+                        {% else %}
+
+                        <span class="saludo">No autenticado</span>
+
+
+                        {% endif %}
+
+
+                    </section>
+
+                    <!-- USER IMG -->
+                    <section class="user">
+                        {% if user.is_authenticated %}
+
+                        <img class="img_user" src="{{user.image}}" alt="">
+                        
+                        {% endif %}
+
+                    </section>
+                    
+                </section>
+
+
+                
+
+
+                {% block content%}
+                
+                
+                
+                {% endblock content%}
+            </section>
+    </section>
+  
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        // MENU TOGGLE 
+        let toggle = document.querySelector('.toggle');
+        let navigation = document.querySelector('.navigation');
+        let main = document.querySelector('.main');
+
+        // AÑADIR OTRA CLASE A UN ELEMENTO
+        
+        toggle.onclick = function(){
+            navigation.classList.toggle('active');
+            main.classList.toggle('active');
+
+        }
+
+        // DE ESTA MANERA AGREGAMOS Y QUIRAMOS UNA CLASE 
+        // CON JAVASCRIP AL HACER HOVER 
+
+        let list = document.querySelectorAll('.navigation li');
+        function activeLink(){
+            list.forEach((item) =>
+            item.classList.remove('hovered'));
+            this.classList.add('hovered');
+        }
+
+        list.forEach((item)=> 
+        item.addEventListener('mouseover', activeLink));
+    </script>
+</body>
+</html>

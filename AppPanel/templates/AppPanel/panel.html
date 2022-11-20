@@ -1,0 +1,197 @@
+{% extends "ProyectoWebapp/base.html" %}
+    
+    {% load static %}
+    <title>
+        {% block title %}
+
+            DASHBOARD -- TOYOTALCPARST
+
+        {% endblock title %}
+  
+    </title>    
+
+    <link rel="stylesheet" href="{% static 'ProyectoWebapp/css/style.css' %}">
+
+    
+    
+
+    {% block content %}
+   
+    <!-- Cards -->
+    <section class="cardBox">
+        <section class="card">
+            <section>
+                <section class="numbers">1.504</section>
+                <section class="cardName">Productos</section>
+            </section>
+            <section class="iconBx">
+                <ion-icon name="eye-outline"></ion-icon>
+            </section>
+        </section>
+        <section class="card">
+            <section>
+                <section class="numbers">64</section>
+                <section class="cardName">Clientes</section>
+            </section>
+            <section class="iconBx">
+                <ion-icon name="people-outline"></ion-icon>
+            </section>
+        </section>
+        <section class="card">
+            <section>
+                <section class="numbers">89</section>
+                <section class="cardName">Ventas</section>
+            </section>
+            <section class="iconBx">
+                <ion-icon name="cart-outline"></ion-icon>
+            </section>
+        </section>
+        <section class="card">
+            <section>
+                <section class="numbers">$2,300</section>
+                <section class="cardName">Ganacia</section>
+            </section>
+            <section class="iconBx">
+                <ion-icon name="cash-outline"></ion-icon>
+            </section>
+        </section>
+        
+    </section>
+
+    <section class="details">
+        <!-- order details list -->
+        <section class="recentOrders">
+            <section class="cardHeader">
+                <h2>Ultimas Ventas</h2>
+                <a href="{% url 'Ventas'%}" class="btn">Ver todo</a>
+            </section>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Nur. Factura</td>
+                            <td>Producto</td>
+                            <td>Cantidad</td>
+                            <td>Precio</td>
+                            <td>Fecha</td>
+                            <td>Pago</td>
+                            <td>Estado</td>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td><span class="status id">632154</span></td>
+                            <td>Abrazadera filtro de gasolina</td>
+                            <td>8</td>
+                            <td>$8</td>
+                            <td>17/08/2022</td>                                        
+                            <td>Pagado</td>
+                            <td><span class="status delivered">Entregado</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="status id">635653</span></td>
+                            <td>Tornillos con tuerca </td>
+                            <td>3</td>
+                            <td>$6</td>
+                            <td>15/08/2022</td>    
+                            <td>Pagado</td>
+                            <td><span class="status pending">Pendiente</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="status id">635652</span></td>
+                            <td>Stop derecho Fortuner</td>
+                            <td>1</td>
+                            <td>$220</td>
+                            <td>08/08/2022</td>    
+                            <td>Pagado</td>
+                            <td><span class="status inprogress">En proceso</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="status id">635651</span></td>
+                            <td>Faro Izq. Corolla 2016</td>
+                            <td>1</td>
+                            <td>$180</td>
+                            <td>06/08/2022</td>    
+                            <td>Pagado</td>
+                            <td><span class="status return">Devuelto</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="status id">635650</span></td>
+                            <td>Tornillos con tuerca </td>
+                            <td>4</td>
+                            <td>$8</td>
+                            <td>06/08/2022</td>    
+                            <td>Pagado</td>
+                            <td><span class="status delivered">Entregado</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="status id">635649</span></td>
+                            <td>Tornillos con tuerca </td>
+                            <td>4</td>
+                            <td>$8</td>
+                            <td>06/08/2022</td>    
+                            <td>Pagado</td>
+                            <td><span class="status inprogress">En Proceso</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="status id">635648</span></td>
+                            <td>Tornillos con tuerca </td>
+                            <td>4</td>
+                            <td>$8</td>
+                            <td>06/08/2022</td>    
+                            <td>Pagado</td>
+                            <td><span class="status delivered">Entregado</span></td>
+                        </tr>
+                        
+                        
+                    </tbody>
+                </table>
+        </section>
+
+        <!-- New Customers -->
+
+        <section class="recentCustomers">
+            <section class="cardHeader">
+                <h2>Clientes con mayor compras</h2>
+            </section>
+
+            <table>
+                <thead>
+                <tr>
+                    <!-- <td></td> -->
+                    <td>Nombre</td>
+                    <td>Apellido</td>
+                    <td>Direccion</td>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for cliente in clientes %}
+                        
+                    <tr>
+                        <!-- <td><span class="status id">{{cliente.id}}</span></td> -->
+                        <td>{{cliente.nombre}}</td>
+                        <td>{{cliente.apellido}}</td>
+                        <td>{{cliente.direccion}}</td>
+                    </tr>                   
+                                                
+                {% endfor %} 
+                
+            </tbody>
+            </table>
+
+        </section>
+
+
+
+
+
+    </section>
+
+    {% endblock content %}
+
+
+
+

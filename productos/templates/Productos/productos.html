@@ -1,0 +1,150 @@
+{% extends "ProyectoWebapp/base.html" %}
+    
+    {% load static %}
+    <title>
+        {% block title %}
+
+            PRODUCTOS
+
+        {% endblock title %}
+  
+    </title>    
+
+    <!-- <link rel="stylesheet" href="{% static 'ProyectoWebapp/css/style.css' %}"> -->
+    
+    {% comment %} <link rel="stylesheet" href="{% static 'ProyectoWebapp/css/modal.css' %}"> {% endcomment %}
+    
+    
+    
+    
+    
+    {% block content %}
+    
+
+    
+
+ 
+   
+    <!-- Cards -->
+    <section class="cardBox">
+        <section class="card cta">
+            <section>
+                <section class="numbers"><ion-icon name="albums-outline"></ion-icon></section>
+                <section class="cardName">Agregar Producto</section>
+            </section>
+            <section class="iconBx">
+                <ion-icon name="add-outline"></ion-icon>
+            </section>
+        </section>
+        
+    </section>
+
+    
+
+    <!-- Tables products -->
+
+    <section class="details productos">
+        <!-- order details list -->
+        <section class="recentOrders">
+            <section class="cardHeader">
+                <h2>Productos</h2>
+                <!-- <a href="#" class="btn">Ver todo</a> -->
+            </section>
+
+           
+
+                <table>
+                    <thead>
+                        <tr>
+                            <td>ID</td>
+                            <td>Producto</td>
+                            <td>Marca</td>
+                            <td>Seccion</td>
+                            <td>Stock</td>
+                            <td>Precio Venta</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for producto in productos %}
+                        
+                        <tr>
+                            <td><span class="">{{producto.id}}</span></td>
+                            <td>{{producto.producto}}</td>
+                            <td>{{producto.marca}}</td>
+                            <td>{{producto.seccion}}</td>
+                            <td>{{producto.cantidad}}</td>
+                            <td>$  {{producto.precio}}.00</td>
+                        </tr>                   
+                                                
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                
+        </section>
+
+        
+
+        
+
+
+    </section> 
+
+
+
+
+    <!-- Modal Products -->
+
+    <div class="modal-container">
+        <div class="modal modal-close">
+            <p class="text">Nuevo Producto</p>
+            <div class="modal-form">
+                <form action="" method="post">
+
+                    {% csrf_token %}
+
+                    {% comment %} <label for="" class="lbl1">Producto:</label>
+                    <input name="producto" type="text" placeholder="Producto" class="inp1">
+                    
+                    
+                    <label for="" class="lbl2">Marca:</label>
+                    <input name="marca" type="text" placeholder="Marca" class="inp2">
+                    
+                    <label for="" class="lbl3">Sección:</label>
+                    <input name="seccion" type="text" placeholder="Seccion" class="inp3">
+                    
+                    <label for="" class="lbl4">Cantidad:</label>
+                    <input name="cantidad" type="text" placeholder="Cantidad" class="inp4">
+                    
+                    <label for="" class="lbl5">Costo:</label>
+                    <input name="costo" type="text" placeholder="Costo" class="inp5"> {% endcomment %}
+
+                    {{form}}
+
+                    <button type="submit" class="btna">Agregar</button>
+                                        
+                </form>
+            </div>
+            <div class="buttoms">
+                <p class="close btnc">Cerrar</p>
+                
+            </div>
+        </div>
+    </div> 
+
+    
+    <script src="{% static 'ProyectoWebapp\js\modal.js' %}"></script>
+    
+    
+    
+    
+    {% endblock content %}
+    
+
+    
+    
+    
+   
+    
+
+
